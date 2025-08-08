@@ -1,0 +1,333 @@
+:root{
+    --bg-color: #fdfcfd;
+    --text-color: #111;
+    --card-bg: rgba(255,255,255,0.15);
+    --highlight: #8a2be2;
+    --glass-blur: 12px;
+    --glow : 0 0 15px #8a2be2;
+}
+
+body{
+    margin: 0;
+    font-family: 'Poppins',sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.5s ease-in-out;
+    overflow-x: hidden;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+.title-wrapper{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.6rem;
+    margin-bottom:1rem;
+}
+
+.title-wrapper h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #8a2be2, #6a5acd);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color:transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+    margin: 0;
+}
+
+body.dark-theme .title-wrapper h1 {
+    background: linear-gradient(90deg, #00e5ff, #0099ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+}
+
+.crypto-logo-title{
+    width:40px;
+    height:40px;
+    filter: drop-shadow(0 0 5px var(--highlight));
+    transition: transform 0.3s ease;
+}
+
+.crypto-logo-title:hover{
+    transform: rotate(10deg) scale(1.1);
+}
+/*Dark theme*/
+
+body.dark-theme{
+    --bg-color:#000;
+    --text-color:#f4f4f4;
+    --carg-bg:rgba(255,255,255,0.05);
+    --highlight: rgb(0,229,255);
+    --glow: 0 0 15px rgb(0,229,255);
+}
+
+
+.container{
+    padding : 3rem;
+    max-width : 1100 px;;
+    margin : auto;
+    animation : fadeIn 1.5s ease-in-out;
+    position : relative;
+    z-index : 1;
+}
+
+.actions{
+    display:flex;
+    gap:1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+header{
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.card-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1.5rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.card{
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    backdrop-filter: blue(var(--glass-blur));
+    transition: transform 0.4s ease,box-shadow 0.4s ease;
+    animation: floatUp 1.2s ease forwards;
+    opacity:0;
+    transform: translateY(40px);
+    border:1px solid transparent;
+}
+
+.card:hover{
+    transform:scale(1.02) rotate(1deg);
+    box-shadow:var(--glow);
+    border: 1px solid var(--highlight);
+}
+
+.card-content{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.crypto-logo{
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+}
+
+.crypto-info h3{
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.crypto-info p{
+    margin: 2px 0;
+    font-size: 0.95rem;
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--bg-color);
+    margin: 5% auto;
+    padding: 20px;
+    width: 70%;
+    max-width : 800px;
+    border-radius: 10px;
+    border: 1px solid var(--highlight);
+    text-align: left;
+    color: var(--text-color);
+    box-shadow: var(--glow);
+    animation: modalFadeZoom 0.3s ease forwards;
+}
+
+.modal-body{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.modal-left{
+    flex:1;
+    min-width:200px;
+}
+
+.modal-left img{
+    width:60px;
+    height:60px;
+    margin-bottom:10px;
+}
+
+.modal-right{
+    flex:2;
+    min-width:300px;
+}
+
+#priceChart{
+    width:100% !important;
+    height: 250px !important;
+}
+
+.loading-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    color: var(--highlight);
+    animation: pulse 1s infinite;
+}
+
+
+#closeModal {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--highlight);
+}
+
+
+input[type="text"]{
+    padding: 0.7rem 1rem;
+    width: 280px;
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    border:1px solid var(--highlight);
+    background-color: rgba(255,255,255,0.1);
+    color:var(--text-color);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    transition: 
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+input[type="text"]:focus{
+    box-shadow: 0 0 12px var(--highlight);
+    outline: none;
+}
+
+.theme-toggle{
+    width:45px;
+    height:45px;
+    font-size: 1.6em;
+    line-height: 45px;
+    text-align:center;
+    border-radius: 50%;
+    background: var(--highlight);
+    border:none;
+    color: white;
+    font-weight: holder;
+    cursor: pointer;
+    box-shadow: var(--glow);
+    transition: transform 0.3s ease,box-shadow 0.3s ease;
+    padding: 0;
+}
+
+.theme-toggle:hover{
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: 0 0 20px var(--highlight);
+}
+
+#lastUpdated{
+    text-align:center;
+    font-size:0.9rem;
+    color:gray;
+    margin-top:10px;
+}
+
+#retryBtn{
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    font-weight: bold;
+    color:white;
+    background: var(--highlight);
+    border:none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(138,43,226,0.4);
+}
+
+#retryBtn:hover {
+    background: linear-gradient(45deg,var(--highlight),var(--highlight));
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(138, 43, 226, 0.6);
+}
+
+#retryBtn:active {
+    transform: scale(0.98);
+}
+
+@keyframes Pulse{
+    0% {transform:scale(1);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+}
+
+.theme-toggle:active{
+    animation: pulse 0.3s ease;
+}
+
+@keyframes fadeIn{
+    0% {opacity:0;}
+    100%{opacity:1;}
+}
+
+@keyframes slideInTop{
+    0%{transform:translateY(-40px);opacity:0;}
+    100%{transform:translateY(0);opacity:1;}
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(40px);opacity:0;}
+    100%{transform:translateY(0);opacity:1;}
+}
+
+@keyframes gradientMove{
+    0% {background-position: 0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+@keyframes modalFadeZoom{
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+

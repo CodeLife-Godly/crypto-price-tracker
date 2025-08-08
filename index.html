@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Price Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href ="style.css"> 
+</head>
+<body>
+    <header>
+        <div class = "title-wrapper">
+            <img src = "assets/cryptocurrencies.png" alt = "Crypto Logo" class = "crypto-logo-title">
+            <h1>Crypto Tracker</h1>
+        </div>
+        <div class = "actions">
+            <input type = "text" id = "searchInput" placeholder = "🔍 Search Crypto Coins..."/>
+            <button id = "themeToggle" class = "theme-toggle"></button>
+        </div>
+    </header>
+    <main>
+        <div id = "CryptoContainer" class = "container card-container"></div>
+        <p id = "lastUpdated"></p>
+    </main>
+    
+    <div id = "cryptoModal" class = "modal">
+        <div class = "modal-content">
+            <span id = "closeModal">&times;</span>
+            <div id="modalLoading" class="loading-text">⏳ Loading...</div>
+            <div class = "modal-body">
+                <div class =  "modal-left">
+                    <h2 id = "modalTitle"></h2>
+                    <img id = "modalImage" src = "" alt = "">
+                    <p id = "modalPrice"></p>
+                    <p id = "modalChange"></p>
+                    <p id = "modalMarketCap"></p>
+                    <p id = "modalVolume"></p>
+                </div> 
+                <div class = "modal-right">
+                    <canvas id = "priceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src = "script.js"></script>
+</body>
+</html>
